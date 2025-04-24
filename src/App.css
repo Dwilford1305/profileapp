@@ -1,0 +1,346 @@
+#root {
+  width: 80%; /* Change max-width to width 80% */
+  margin: 0 auto;
+  padding: 2rem; /* Keep padding for content spacing */
+  text-align: center; /* Adjust as needed for portfolio layout */
+}
+
+.card {
+  padding: 2em;
+  background-color: var(--card-background); /* Use card background color */
+  border-radius: 8px;
+  margin-top: 2rem; /* Add some spacing */
+}
+
+/* Add any additional portfolio-specific styles below */
+
+/* Basic Layout */
+.portfolio-main {
+  padding-top: 60px; /* Adjust based on navbar height */
+}
+
+.portfolio-section {
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.portfolio-section h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed; /* Stick to top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Navbar background stays full width */
+  background-color: var(--background-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 0 1rem; /* Add some padding for edges if needed */
+}
+
+/* New container for navbar content */
+.navbar-content {
+  width: 80%; /* Constrain content width */
+  margin: 0 auto; /* Center the content */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px; /* Ensure consistent height */
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--primary-color);
+  flex-shrink: 0; /* Prevent brand from shrinking if space is tight */
+}
+
+.navbar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* Let the parent .navbar-content handle the flex layout */
+}
+
+.navbar-links li {
+  display: inline-block; /* Display items inline */
+  margin-left: 1.2rem; /* Adjust spacing as needed */
+}
+
+.navbar-links li:first-child {
+  margin-left: 0; /* No margin for the first item */
+}
+
+.navbar-links a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Hamburger Toggler Button - Hidden on Desktop */
+.navbar-toggler {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem; /* Space from brand */
+}
+
+.navbar-toggler span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 5px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Projects Section */
+/* Add styles for the carousel container and slides */
+.project-carousel {
+  margin: 0 auto; /* Center carousel if needed */
+  /* max-width: 90%; */ /* Optional: constrain width */
+}
+
+/* Removed empty ruleset for .project-slide */
+
+.project-card {
+  /* Ensure cards take full height within the slide if needed */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes link to bottom */
+  margin: 0 0.75rem; /* Adjust value as needed */
+}
+
+.project-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5em 1em;
+  background-color: var(--primary-color);
+  color: var(--background-color); /* Dark text */
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s; /* Add color transition */
+  align-self: center; /* Center the button */
+}
+
+.project-link:hover {
+  background-color: var(--hover-color); /* Lighter orange background */
+  color: var(--background-color); /* Keep dark text color for contrast */
+}
+
+/* Styles for the project screenshot */
+.project-screenshot {
+  width: 100%; /* Make image responsive */
+  aspect-ratio: 16 / 9; /* Maintain aspect ratio (adjust as needed) */
+  object-fit: cover; /* Cover the area, cropping if necessary */
+  border-radius: 4px; /* Optional: match card rounding */
+  margin-bottom: 1rem; /* Space below image */
+  border: 2px solid var(--primary-color); /* Add thin orange border */
+}
+
+/* Customize slick dots */
+.slick-dots li button:before {
+  font-size: 12px; /* Adjust dot size */
+  color: var(--primary-color); /* Orange dots */
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: var(--primary-color); /* Active dot color */
+}
+
+/* Customize slick arrows (optional) */
+.slick-prev:before,
+.slick-next:before {
+  color: var(--primary-color); /* Orange arrows */
+  font-size: 24px; /* Adjust arrow size */
+}
+
+/* Skills Section */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.skills-list li {
+  display: inline-block;
+  background-color: var(--card-background);
+  color: var(--secondary-color);
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+}
+
+/* Contact Section */
+.contact-link {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+/* Footer */
+.portfolio-footer {
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  background-color: var(--card-background);
+  color: var(--secondary-color);
+  font-size: 0.9em;
+}
+
+.social-links {
+  margin-bottom: 1rem; /* Space between icons and copyright */
+}
+
+.social-link {
+  color: var(--primary-color); /* Use theme color */
+  text-decoration: none;
+  margin: 0 0.75rem; /* Space between icons */
+  font-size: 1.2em; /* Adjust size as needed */
+  transition: color 0.2s;
+}
+
+.social-link:hover {
+  color: var(--hover-color); /* Use hover color */
+}
+
+/* --- Responsive Design --- */
+
+/* Medium screens (tablets, smaller laptops) */
+@media (max-width: 992px) {
+  #root {
+    width: 80%; /* Use more width on medium screens */
+    padding: 1.5rem;
+  }
+
+  .portfolio-section {
+    padding: 2rem 1rem;
+  }
+
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar-content {
+    width: 80%; /* Match root width */
+  }
+
+  .navbar-links li {
+    margin-left: 1rem; /* Further reduce margin */
+  }
+
+  /* Removed empty ruleset for .project-slide */
+
+  .project-card {
+    margin: 0 0.5rem; /* Adjust margin for medium screens */
+  }
+}
+
+/* Small screens (mobile phones) */
+@media (max-width: 768px) {
+  #root {
+    width: 90%; /* Use full width on mobile */
+    padding: 1rem;
+  }
+
+  .portfolio-main {
+    padding-top: 50px; /* Adjust if navbar height changes */
+  }
+
+  .navbar {
+    padding: 0; /* Remove padding, content handles it */
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center; /* Align brand and toggler */
+  }
+
+  .navbar-content {
+    width: 90%; /* Use full width inside navbar */
+    padding: 0.8rem 1rem; /* Add padding back here */
+    min-height: 50px; /* Adjust height for mobile */
+  }
+
+  /* Show Hamburger */
+  .navbar-toggler {
+    display: block; 
+  }
+
+  /* Hide Links by default, prepare for absolute positioning */
+  .navbar-links {
+    display: none; /* Hide initially */
+    position: absolute;
+    top: 50px; /* Position below navbar-content (adjust if height changes) */
+    left: 0;
+    background-color: var(--background-color);
+    width: 100%;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--primary-color); /* Separator */
+  }
+
+  /* Show links when 'open' class is added */
+  .navbar-links.open {
+    display: block; /* Change from flex to block */
+  }
+
+  .navbar-links li {
+    display: block; /* Stack items vertically */
+    margin-left: 0;
+    margin-top: 0; /* Remove top margin */
+    text-align: center; /* Center links */
+    padding: 0.8rem 1rem; /* Add padding for touch targets */
+    border-bottom: 1px solid var(--card-background); /* Separators */
+  }
+
+  .navbar-links li:last-child {
+    border-bottom: none;
+  }
+
+  .navbar-links a {
+    display: block; /* Make link fill the li */
+    width: 100%;
+  }
+
+  .portfolio-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .portfolio-section h2 {
+    font-size: 1.8em; /* Slightly smaller headings */
+  }
+
+  /* Removed empty ruleset for .project-slide */
+
+  .project-card {
+    margin: 0 0.25rem; /* Adjust margin for small screens */
+  }
+
+  .skills-list li {
+    padding: 0.4em 0.8em;
+    margin: 0.4em;
+  }
+
+  .portfolio-footer {
+    padding: 1rem;
+    font-size: 0.8em;
+  }
+}
