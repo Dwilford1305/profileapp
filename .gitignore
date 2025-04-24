@@ -11,12 +11,15 @@ node_modules
 dist
 dist-ssr
 *.local
+.vite # Vite cache directory
+coverage # Test coverage reports
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+Thumbs.db # Windows thumbnail cache
 *.suo
 *.ntvs*
 *.njsproj
