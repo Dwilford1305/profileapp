@@ -30,7 +30,7 @@
 body.light-theme {
   --current-primary: #FFA500; /* Orange for light theme primary */
   --current-secondary: #1a1a1a; /* Dark text for light theme (using dark theme bg color for contrast) */
-  --current-background: #ffffff; /* Try pure white for main background */
+  --current-background: #e0dddd; /* Try pure white for main background */
   --current-card-background: #f8f9fa; /* Light grey for cards */
   --current-hover: #e69500; /* Slightly darker orange for hover */
 
