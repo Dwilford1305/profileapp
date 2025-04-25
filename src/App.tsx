@@ -2,7 +2,24 @@ import { useState } from 'react';
 import Slider from "react-slick"; // Import Slider
 import "slick-carousel/slick/slick.css"; // Import base slick CSS
 import "slick-carousel/slick/slick-theme.css"; // Import theme slick CSS
+import { useInView } from 'react-intersection-observer'; // Import useInView
 import './App.css';
+
+// Helper component for scroll animation
+import { ReactNode } from 'react';
+
+function AnimatedSection({ children }: { children: ReactNode }) {
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Only trigger the animation once
+    threshold: 0.05, // Trigger when 5% (or even lower like 0.01) of the element is visible
+  });
+
+  return (
+    <div ref={ref} className={`portfolio-section-container ${inView ? 'visible' : ''}`}>
+      {children}
+    </div>
+  );
+}
 
 // Simple Navbar Component
 function Navbar() {
@@ -178,10 +195,19 @@ function App() {
     <>
       <Navbar />
       <main className="portfolio-main">
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+        {/* Wrap each section with AnimatedSection */}
+        <AnimatedSection>
+          <About />
+        </AnimatedSection>
+        <AnimatedSection>
+          <Projects />
+        </AnimatedSection>
+        <AnimatedSection>
+          <Skills />
+        </AnimatedSection>
+        <AnimatedSection>
+          <Contact />
+        </AnimatedSection>
       </main>
       <footer className="portfolio-footer">
         <p>&copy; 2025 Derek Wilford. All rights reserved.</p>
