@@ -39,6 +39,14 @@ body.light-theme {
   background-color: var(--current-background);
 }
 
+/* Add text outline to specific headings in light mode */
+body.light-theme #projects h2,
+body.light-theme #contact h2 {
+  /* Replace text-shadow with text-stroke */
+  -webkit-text-stroke: 0.25px var(--current-secondary); /* 0.25px width, use dark text color */
+  /* text-stroke: 1px var(--current-secondary); Removed due to validation error */
+}
+
 /* Adjust background image opacity for light theme */
 body.light-theme::before {
   opacity: 0.1; /* Make background image much fainter in light mode */
