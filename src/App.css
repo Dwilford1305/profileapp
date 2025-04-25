@@ -8,6 +8,7 @@
 .card {
   padding: 2em;
   background-color: var(--card-background); /* Use card background color */
+  opacity: 0.9; /* Adjust transparency */
   border-radius: 8px;
   margin-top: 2rem; /* Add some spacing */
 }
@@ -22,6 +23,7 @@
 .portfolio-section {
   padding: 3rem 2rem;
   margin-bottom: 2rem;
+  scroll-margin-top: 70px; /* Offset for fixed navbar height */
 }
 
 .portfolio-section h2 {
@@ -52,10 +54,24 @@
 }
 
 .navbar-brand {
-  font-size: 1.5em;
-  font-weight: bold;
   color: var(--primary-color);
-  flex-shrink: 0; /* Prevent brand from shrinking if space is tight */
+  flex-shrink: 0;
+  display: flex; /* Use flex to align image and text */
+  align-items: center; /* Vertically center items */
+  gap: 0.5rem; /* Space between image and text */
+}
+
+/* Style for the headshot in the brand */
+.brand-headshot {
+  height: 35px; /* Adjust height as needed */
+  width: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Make it circular */
+  object-fit: cover;
+}
+
+.navbar-brand span {
+  font-size: 1.5em; /* Apply font size to the text */
+  font-weight: bold;
 }
 
 .navbar-links {
@@ -223,6 +239,13 @@
   color: var(--hover-color); /* Use hover color */
 }
 
+/* Style for the icons */
+.social-icon {
+  height: 24px; /* Reduce height */
+  width: auto; /* Maintain aspect ratio */
+  vertical-align: middle; /* Align icon within the link */
+}
+
 /* --- Responsive Design --- */
 
 /* Medium screens (tablets, smaller laptops) */
@@ -322,6 +345,7 @@
 
   .portfolio-section {
     padding: 1.5rem 0.5rem;
+    scroll-margin-top: 60px; /* Adjust offset for mobile navbar height */
   }
 
   .portfolio-section h2 {

@@ -32,10 +32,29 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center; /* Center content for now, can be adjusted */
   min-width: 320px;
   min-height: 100vh;
+  position: relative; /* Needed for pseudo-element positioning */
+  z-index: 0; /* Ensure body is above the pseudo-element */
+}
+
+body::before {
+  content: '';
+  position: fixed; /* Fixed position for parallax */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Place behind content */
+
+  /* Apply background image styles here */
+  background-image: url('/techbackground.jpeg'); /* Updated path */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* Apply transparency */
+  opacity: 0.4; /* Adjust value between 0 (transparent) and 1 (opaque) */
 }
 
 h1, h2, h3, h4, h5, h6 {

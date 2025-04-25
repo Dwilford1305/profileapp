@@ -16,7 +16,11 @@ function Navbar() {
     <nav className="navbar">
       {/* Container for content */}
       <div className="navbar-content">
-        <div className="navbar-brand">Derek Wilford</div>
+        {/* Update navbar-brand to include image */}
+        <div className="navbar-brand">
+          <img src="/media/headshot.png" alt="Headshot" className="brand-headshot" />
+          <span>Derek Wilford</span> {/* Wrap name in span */}
+        </div>
         {/* Links List */}
         <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
           <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
@@ -150,19 +154,19 @@ function Contact() {
   return (
     <section id="contact" className="portfolio-section">
       <h2>Contact Me</h2>
-      <p>Feel free to reach out! You can contact me via email or connect on LinkedIn.</p>
+      <p>Feel free to reach out! You can contact me via email or connect on social media.</p>
       {/* Add contact form or links */}
       <a href="mailto:wilfordderek@gmail.com" className="contact-link">wilfordderek@gmail.com</a>
       {/* Add Social Links Here */}
       <div className="social-links">
         {/* Replace # with your actual profile URLs */}
-        <a href="#" target="_blank" rel="noopener noreferrer" className="social-link">
-          {/* Placeholder for LinkedIn Icon */}
-          LinkedIn
+        <a href="https://www.linkedin.com/in/derek-wilford13" target="_blank" rel="noopener noreferrer" className="social-link">
+          {/* Replace text with img tag */}
+          <img src="/media/InBug-White.png" alt="LinkedIn Profile" className="social-icon" />
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" className="social-link">
-          {/* Placeholder for GitHub Icon */}
-          GitHub
+        <a href="https://github.com/Dwilford1305" target="_blank" rel="noopener noreferrer" className="social-link">
+          {/* Replace text with img tag */}
+          <img src="/media/github-mark-white.png" alt="GitHub Profile" className="social-icon" />
         </a>
       </div>
     </section>

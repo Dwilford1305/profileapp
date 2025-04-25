@@ -25,3 +25,6 @@ Thumbs.db # Windows thumbnail cache
 *.njsproj
 *.sln
 *.sw?
+
+# Media Folder
+/public/media
