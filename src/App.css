@@ -65,32 +65,48 @@
   min-height: 60px; /* Ensure consistent height */
 }
 
+/* Add styles for navbar brand */
 .navbar-brand {
-  color: var(--primary-color);
-  flex-shrink: 0;
-  display: flex; /* Use flex to align image and text */
-  align-items: center; /* Vertically center items */
-  gap: 0.5rem; /* Space between image and text */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Add some space between image and text */
 }
 
-/* Style for the headshot in the brand */
 .brand-headshot {
-  height: 35px; /* Adjust height as needed */
+  height: 40px; /* Adjust height as needed */
   width: auto; /* Maintain aspect ratio */
   border-radius: 50%; /* Make it circular */
-  object-fit: cover;
+  object-fit: cover; /* Ensure image covers the area well */
 }
 
-.navbar-brand span {
-  font-size: 1.5em; /* Apply font size to the text */
-  font-weight: bold;
+/* Desktop right group */
+.navbar-right-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
+/* Hide mobile toggles wrapper on desktop */
+.navbar-mobile-toggles {
+  display: none;
+}
+
+/* Hide mobile theme toggle on desktop */
+.theme-toggle-button.mobile-toggle {
+  display: none;
+}
+
+/* Ensure desktop theme toggle is visible */
+.theme-toggle-button.desktop-toggle {
+  display: inline-flex; /* Or block, depending on desired layout */
+}
+
+/* Keep original navbar-links styling for desktop */
 .navbar-links {
   list-style: none;
   padding: 0;
   margin: 0;
-  /* Let the parent .navbar-content handle the flex layout */
+  display: flex; /* Ensure links are horizontal on desktop */
 }
 
 .navbar-links li {
@@ -112,6 +128,11 @@
   color: var(--primary-color);
 }
 
+/* Hide the separate mobile links container on desktop */
+.navbar-links-mobile {
+  display: none;
+}
+
 /* Hamburger Toggler Button - Hidden on Desktop */
 .navbar-toggler {
   display: none;
@@ -129,6 +150,49 @@
   background-color: var(--primary-color);
   margin: 5px 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Theme Toggle Button Style */
+.theme-toggle-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 1.5rem; /* Adjust size */
+  padding: 0.5rem;
+  display: inline-flex; /* Helps with alignment */
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-button:hover {
+  opacity: 0.8;
+}
+
+/* Light theme adjustments for toggles if needed */
+.light-theme .theme-toggle-button {
+  color: var(--primary-color);
+}
+
+.light-theme .navbar-toggler span {
+  background-color: var(--primary-color);
+}
+
+.light-theme .navbar-links-mobile {
+  background-color: var(--background-color);
+  border-top: 1px solid var(--primary-color);
+}
+
+.light-theme .navbar-links-mobile li {
+  border-bottom: 1px solid var(--card-background);
+}
+
+.light-theme .navbar-links-mobile a {
+  color: var(--secondary-color);
+}
+
+.light-theme .navbar-links-mobile a:hover {
+  color: var(--primary-color);
 }
 
 /* Projects Section */
@@ -326,47 +390,83 @@
     width: 90%; /* Use full width inside navbar */
     padding: 0.8rem 1rem; /* Add padding back here */
     min-height: 50px; /* Adjust height for mobile */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  /* Show Hamburger */
+  /* Hide desktop right group on mobile */
+  .navbar-right-group {
+    display: none;
+  }
+
+  /* Show mobile toggles wrapper and style it */
+  .navbar-mobile-toggles {
+    display: flex; /* Use flex to align items */
+    align-items: center;
+    gap: 0.5rem; /* Space between theme toggle and hamburger */
+  }
+
+  /* Ensure mobile theme toggle is visible */
+  .theme-toggle-button.mobile-toggle {
+    display: inline-flex; /* Or block */
+  }
+
+  /* Hide desktop theme toggle on mobile */
+  .theme-toggle-button.desktop-toggle {
+    display: none;
+  }
+
+  /* Hamburger Toggler Button - Ensure it's displayed */
   .navbar-toggler {
-    display: block; 
+    display: block; /* Make sure it's visible */
+    order: initial; /* Reset order */
   }
 
-  /* Hide Links by default, prepare for absolute positioning */
-  .navbar-links {
-    display: none; /* Hide initially */
+  /* Style the separate mobile links container */
+  .navbar-links-mobile {
+    display: none; /* Hidden by default */
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
     position: absolute;
-    top: 50px; /* Position below navbar-content (adjust if height changes) */
+    top: 100%; /* Position below the navbar */
     left: 0;
     background-color: var(--background-color);
     width: 100%;
-    padding: 1rem 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-top: 1px solid var(--primary-color); /* Separator */
+    border-top: 1px solid var(--primary-color);
+    z-index: 999; /* Below navbar but above content */
   }
 
-  /* Show links when 'open' class is added */
-  .navbar-links.open {
-    display: block; /* Change from flex to block */
+  .navbar-links-mobile.open {
+    display: block; /* Show when open */
   }
 
-  .navbar-links li {
-    display: block; /* Stack items vertically */
-    margin-left: 0;
-    margin-top: 0; /* Remove top margin */
-    text-align: center; /* Center links */
-    padding: 0.8rem 1rem; /* Add padding for touch targets */
-    border-bottom: 1px solid var(--card-background); /* Separators */
+  .navbar-links-mobile li {
+    display: block;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--card-background);
   }
 
-  .navbar-links li:last-child {
+  .navbar-links-mobile li:last-child {
     border-bottom: none;
   }
 
-  .navbar-links a {
-    display: block; /* Make link fill the li */
+  .navbar-links-mobile a {
+    display: block;
     width: 100%;
+    color: var(--secondary-color); /* Ensure correct color */
+  }
+
+  .navbar-links-mobile a:hover {
+    color: var(--primary-color);
+  }
+
+  /* Hide the desktop links ul completely */
+  .navbar-links {
+    display: none;
   }
 
   .portfolio-section {

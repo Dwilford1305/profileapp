@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Slider from "react-slick"; // Import Slider
 import "slick-carousel/slick/slick.css"; // Import base slick CSS
 import "slick-carousel/slick/slick-theme.css"; // Import theme slick CSS
@@ -22,8 +22,8 @@ function AnimatedSection({ children }: { children: ReactNode }) {
 }
 
 // Simple Navbar Component
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // State for hamburger menu
+function Navbar({ toggleTheme, currentTheme }: { toggleTheme: () => void, currentTheme: string }) {
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -31,27 +31,48 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      {/* Container for content */}
       <div className="navbar-content">
-        {/* Update navbar-brand to include image */}
         <div className="navbar-brand">
           <img src="/media/headshot.png" alt="Headshot" className="brand-headshot" />
-          <span>Derek Wilford</span> {/* Wrap name in span */}
+          <span>Derek Wilford</span>
         </div>
-        {/* Links List */}
-        <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
-          <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
-          <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
-          <li><a href="#skills" onClick={() => setIsOpen(false)}>Skills</a></li>
-          <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
-        </ul>
-        {/* Hamburger Button - Moved after links */}
-        <button className="navbar-toggler" onClick={toggleMenu} aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+
+        {/* Wrapper for right-side items on desktop */}
+        <div className="navbar-right-group">
+          {/* Theme Toggle Button - Desktop */}
+          <button onClick={toggleTheme} className="theme-toggle-button desktop-toggle" aria-label="Toggle theme">
+            {currentTheme === 'light' ? '🌙' : '☀️'}
+          </button>
+          {/* Links List - Desktop */}
+          <ul className="navbar-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        {/* Wrapper for toggles on mobile */}
+        <div className="navbar-mobile-toggles">
+          {/* Theme Toggle Button - Mobile */}
+          <button onClick={toggleTheme} className="theme-toggle-button mobile-toggle" aria-label="Toggle theme">
+            {currentTheme === 'light' ? '🌙' : '☀️'}
+          </button>
+          {/* Hamburger Button */}
+          <button className="navbar-toggler" onClick={toggleMenu} aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
+      {/* Mobile Menu Links - Placed outside navbar-content for easier absolute positioning */}
+      <ul className={`navbar-links-mobile ${isOpen ? 'open' : ''}`}>
+        <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
+        <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
+        <li><a href="#skills" onClick={() => setIsOpen(false)}>Skills</a></li>
+        <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
+      </ul>
     </nav>
   );
 }
@@ -167,7 +188,10 @@ function Skills() {
 }
 
 // Contact Section Component
-function Contact() {
+function Contact({ theme }: { theme: string }) { // Add theme prop
+  const linkedinIcon = theme === 'light' ? '/media/InBug-Black.png' : '/media/InBug-White.png';
+  const githubIcon = theme === 'light' ? '/media/github-mark.png' : '/media/github-mark-white.png';
+
   return (
     <section id="contact" className="portfolio-section">
       <h2>Contact Me</h2>
@@ -179,11 +203,11 @@ function Contact() {
         {/* Replace # with your actual profile URLs */}
         <a href="https://www.linkedin.com/in/derek-wilford13" target="_blank" rel="noopener noreferrer" className="social-link">
           {/* Replace text with img tag */}
-          <img src="/media/InBug-White.png" alt="LinkedIn Profile" className="social-icon" />
+          <img src={linkedinIcon} alt="LinkedIn Profile" className="social-icon" /> {/* Use dynamic icon */}
         </a>
         <a href="https://github.com/Dwilford1305" target="_blank" rel="noopener noreferrer" className="social-link">
           {/* Replace text with img tag */}
-          <img src="/media/github-mark-white.png" alt="GitHub Profile" className="social-icon" />
+          <img src={githubIcon} alt="GitHub Profile" className="social-icon" /> {/* Use dynamic icon */}
         </a>
       </div>
     </section>
@@ -191,9 +215,24 @@ function Contact() {
 }
 
 function App() {
+  const [theme, setTheme] = useState('dark'); // Default theme
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  // Effect to apply theme class to body
+  useEffect(() => {
+    if (theme === 'light') {
+      document.body.classList.add('light-theme');
+    } else {
+      document.body.classList.remove('light-theme'); // Explicitly remove light-theme when dark
+    }
+  }, [theme]); // Re-run when theme changes
+
   return (
     <>
-      <Navbar />
+      <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
       <main className="portfolio-main">
         {/* Wrap each section with AnimatedSection */}
         <AnimatedSection>
@@ -206,7 +245,7 @@ function App() {
           <Skills />
         </AnimatedSection>
         <AnimatedSection>
-          <Contact />
+          <Contact theme={theme} /> {/* Pass theme prop */}
         </AnimatedSection>
       </main>
       <footer className="portfolio-footer">

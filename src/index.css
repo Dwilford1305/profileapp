@@ -10,9 +10,15 @@
   --card-background: #242424; /* Slightly lighter card background */
   --hover-color: #FFC107; /* Lighter orange for hover */
 
-  color-scheme: dark; /* Force dark mode */
-  color: var(--secondary-color);
-  background-color: var(--background-color);
+  /* Default to dark theme variables */
+  --current-primary: var(--primary-color);
+  --current-secondary: var(--secondary-color);
+  --current-background: var(--background-color);
+  --current-card-background: var(--card-background);
+  --current-hover: var(--hover-color);
+
+  color: var(--current-secondary);
+  background-color: var(--current-background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,14 +26,122 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Light Theme Variables */
+body.light-theme {
+  --current-primary: #FFA500; /* Orange for light theme primary */
+  --current-secondary: #1a1a1a; /* Dark text for light theme (using dark theme bg color for contrast) */
+  --current-background: #ffffff; /* Try pure white for main background */
+  --current-card-background: #f8f9fa; /* Light grey for cards */
+  --current-hover: #e69500; /* Slightly darker orange for hover */
+
+  color-scheme: light;
+  color: var(--current-secondary);
+  background-color: var(--current-background);
+}
+
+/* Adjust background image opacity for light theme */
+body.light-theme::before {
+  opacity: 0.1; /* Make background image much fainter in light mode */
+}
+
+/* Ensure navbar and card backgrounds use the correct variable */
+body.light-theme .navbar {
+  background-color: var(--current-background);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow for light theme */
+}
+
+body.light-theme .card {
+  background-color: var(--current-card-background);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); /* Subtle shadow for cards */
+}
+
+/* Ensure navbar brand text is readable */
+body.light-theme .navbar-brand span {
+  color: var(--current-secondary);
+}
+
+/* Ensure skills list items are readable */
+body.light-theme .skills-list li {
+  background-color: var(--current-card-background);
+  color: var(--current-secondary);
+  border: 1px solid var(--current-primary);
+}
+
+/* Ensure footer is readable */
+body.light-theme .portfolio-footer {
+  background-color: var(--current-card-background);
+  color: var(--current-secondary);
+}
+
+/* Ensure navbar links are dark in light mode */
+body.light-theme .navbar-links a,
+body.light-theme .navbar-links-mobile a {
+  color: var(--current-secondary);
+}
+
+body.light-theme .navbar-links a:hover,
+body.light-theme .navbar-links-mobile a:hover {
+  color: var(--current-primary); /* Keep hover color orange */
+}
+
+/* Social Icon Swapping for Light Theme */
+/* Remove the previous attempt using content on img */
+body.light-theme .social-link.github-link img,
+body.light-theme .social-link.linkedin-link img {
+    content: none; /* Remove potentially problematic rule */
+}
+
+/* Style the links for background images */
+.social-link {
+    display: inline-block; /* Needed for background image sizing */
+    position: relative; /* Needed for positioning img/pseudo-elements if used */
+    width: 24px;  /* Match image size */
+    height: 24px; /* Match image size */
+    vertical-align: middle;
+    /* Ensure link color doesn't affect background */
+    color: transparent; 
+}
+
+.social-link img {
+    display: block; /* Make image fill the link container */
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.25s ease-in-out; /* Smooth fade */
+    opacity: 1; /* Ensure visible by default */
+}
+
+body.light-theme .social-link.github-link {
+    background-image: url('/media/github-mark.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body.light-theme .social-link.linkedin-link {
+    background-image: url('/media/InBug-Black.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Dark Theme: Ensure no background image is set (explicitly) */
+.social-link.github-link,
+.social-link.linkedin-link {
+    background-image: none;
+}
+
+/* Re-apply dark theme background overrides if needed, or ensure they are not applied in light theme */
+/* Example: If dark theme explicitly set backgrounds, reset them here */
+/* (The above rules should handle it by setting background-image: none by default) */
+
 a {
   font-weight: 500;
-  color: var(--primary-color);
+  color: var(--current-primary);
   text-decoration: inherit;
   transition: color 0.25s;
 }
 a:hover {
-  color: var(--hover-color);
+  color: var(--current-hover);
 }
 
 body {
@@ -58,7 +172,7 @@ body::before {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--primary-color); /* Headings in orange */
+  color: var(--current-primary); /* Headings use primary color */
 }
 
 button {
@@ -68,16 +182,136 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--primary-color); /* Orange buttons */
-  color: var(--background-color); /* Dark text on buttons */
+  background-color: var(--current-primary); /* Use current primary */
+  color: #FFFFFF; /* Ensure button text is readable in both themes */
   cursor: pointer;
   transition: background-color 0.25s, border-color 0.25s;
 }
 button:hover {
-  background-color: var(--hover-color);
-  border-color: var(--hover-color);
+  background-color: var(--current-hover);
+  border-color: var(--current-hover);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color; /* Keep default focus outline */
+}
+
+/* Update other elements as needed, e.g., card background */
+.card {
+  background-color: var(--current-card-background); /* Use current card background */
+}
+
+/* Update navbar background */
+.navbar {
+  background-color: var(--current-background);
+}
+
+/* Update navbar links */
+.navbar-links a {
+  color: var(--current-secondary);
+}
+
+.navbar-links a:hover {
+  color: var(--current-primary);
+}
+
+/* Update mobile navbar links background */
+.navbar-links-mobile {
+  background-color: var(--current-background);
+  border-top: 1px solid var(--current-primary);
+}
+
+.navbar-links-mobile a {
+  color: var(--current-secondary);
+}
+
+.navbar-links-mobile a:hover {
+  color: var(--current-primary);
+}
+
+/* Update toggler span color */
+.navbar-toggler span {
+  background-color: var(--current-primary);
+}
+
+/* Ensure navbar brand text uses the correct secondary color */
+.navbar-brand span {
+  color: var(--current-secondary);
+}
+
+/* Update theme toggle button color */
+.theme-toggle-button {
+  color: var(--current-primary);
+}
+
+/* Update project card elements */
+.project-card h3 {
+  color: var(--current-primary);
+}
+
+.project-link {
+  background-color: var(--current-primary);
+  color: var(--current-background); /* Text color based on background */
+}
+
+.project-link:hover {
+  background-color: var(--current-hover);
+  color: var(--current-background);
+}
+
+body.light-theme .project-link {
+  /* Ensure contrast on light cards with orange button */
+  color: #FFFFFF; /* White text on orange button */
+}
+
+body.light-theme .button {
+  /* Ensure contrast on light background with orange button */
+  color: #FFFFFF; /* White text on orange button */
+}
+
+.project-screenshot {
+  border: 2px solid var(--current-primary);
+}
+
+/* Update slick dots */
+.slick-dots li button:before {
+  color: var(--current-primary);
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--current-primary);
+}
+
+/* Update slick arrows */
+.slick-prev:before,
+.slick-next:before {
+  color: var(--current-primary);
+}
+
+/* Update skills list */
+.skills-list li {
+  background-color: var(--current-card-background);
+  color: var(--current-secondary);
+  border: 1px solid var(--current-primary);
+}
+
+/* Update contact link */
+.contact-link {
+  color: var(--current-primary);
+}
+
+/* Update footer */
+.portfolio-footer {
+  background-color: var(--current-card-background);
+  color: var(--current-secondary);
+}
+
+.social-link {
+  color: var(--current-primary); /* Keep primary color for links */
+  /* Add transition if not already present */
+  transition: color 0.25s;
+}
+
+social-link:hover {
+  color: var(--current-hover); /* Use hover color */
 }
