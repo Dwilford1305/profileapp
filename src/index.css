@@ -168,7 +168,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   position: relative; /* Needed for pseudo-element positioning */
-  z-index: 0;
+  z-index: 0; /* Ensure main content is above the midground icons */
 }
 
 /* Body pseudo-element for background image with parallax effect */
@@ -179,7 +179,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1; /* Place behind all other content */
+  z-index: -2; /* Ensure background is behind everything */
   background-image: url('/techbackorange.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -327,3 +327,8 @@ body.light-theme .button {
 
 /* Removed invalid social-link:hover rule */
 /* Hover effect for social links is handled by the general 'a:hover' rule */
+
+/* Adjust z-index for proper stacking order */
+.parallax-container {
+  z-index: -1; /* Place midground icons above the background but below main content */
+}

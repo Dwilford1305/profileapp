@@ -374,6 +374,42 @@
   transform: scale(1.3); /* Enlarge icon slightly */
 }
 
+/* --- Parallax Container --- */
+
+/* Remove debugging styles for parallax-container */
+.parallax-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  background-color: transparent; /* Remove red debugging background */
+  pointer-events: none; /* Allow interactions with content above */
+  z-index: -1; /* Place it between the background and main content */
+}
+
+/* Ensure parallax icons are positioned within the visible area */
+.parallax-icon {
+  position: absolute;
+  width: 50px; /* Adjust size as needed */
+  height: auto;
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
+  background-color: transparent; /* Remove green debugging background */
+  visibility: visible; /* Ensure icons are visible */
+  opacity: 0.3; /* Ensure icons are not transparent */
+}
+
+/* Floating animation for icons */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* --- Responsive Design --- */
 
 /* Medium screens (tablets, smaller laptops) */

@@ -235,6 +235,56 @@ function Contact({ theme }: { theme: string }) {
 }
 
 /**
+ * ParallaxIcons Component
+ * Displays a set of icons with a parallax effect based on scroll position.
+ * Icons are scattered randomly throughout the midground.
+ */
+function ParallaxIcons() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const icons = document.querySelectorAll('.parallax-icon');
+      icons.forEach((icon, index) => {
+        const speed = (index + 1) * 0.1; // Adjust speed based on index
+        const offset = window.scrollY * speed;
+        (icon as HTMLElement).style.transform = `translateY(${offset}px)`;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const techIcons = [
+    'Android Studio.png', 'CSharp.png', 'CSS3.png', 'Git.png', 'HTML5.png',
+    'Java.png', 'JavaScript.png', 'jQuery.png', 'Linux.png', 'MongoDB.png',
+    'MySQL.png', 'Node.js.png', 'React.png', 'Swift.png', 'TypeScript.png', 'Vite.png'
+  ];
+
+  const generateRandomPosition = () => {
+    const x = Math.random() * 90 + 5; // Ensure icons stay within 5% to 95% horizontally
+    const y = Math.random() * 90 + 5; // Ensure icons stay within 5% to 95% vertically
+    return { x, y };
+  };
+
+  return (
+    <div className="parallax-container">
+      {techIcons.map((icon, index) => {
+        const { x, y } = generateRandomPosition();
+        return (
+          <img
+            key={index}
+            src={`./media/techicons/${icon}`} // Adjusted path to match Vite's public folder structure
+            alt={icon.replace('.png', '')}
+            className="parallax-icon"
+            style={{ left: `${x}%`, top: `${y}%` }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+/**
  * Main App Component
  * The root component that orchestrates the layout, theme switching, and renders all sections.
  */
@@ -281,6 +331,9 @@ function App() {
           <Contact theme={theme} />
         </AnimatedSection>
       </main>
+
+      {/* Parallax Icons */}
+      <ParallaxIcons />
 
       {/* Footer section */}
       <footer className="portfolio-footer">
