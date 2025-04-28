@@ -383,7 +383,6 @@
   left: 0;
   width: 100%;
   height: 100vh; /* Full viewport height */
-  background-color: transparent; /* Remove red debugging background */
   pointer-events: none; /* Allow interactions with content above */
   z-index: -1; /* Place it between the background and main content */
 }
@@ -391,7 +390,7 @@
 /* Ensure parallax icons are positioned within the visible area */
 .parallax-icon {
   position: absolute;
-  width: 50px; /* Adjust size as needed */
+  width: 60px; /* Adjust size as needed */
   height: auto;
   animation: float 4s ease-in-out infinite;
   will-change: transform;
@@ -420,7 +419,7 @@
 /* Floating animation for icons */
 @keyframes float {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(-5px);
   }
   50% {
     transform: translateY(-10px);
