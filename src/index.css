@@ -1,147 +1,157 @@
+/* filepath: d:\profileapp\src\index.css */
+/* Global CSS variables and base styles */
 :root {
+  /* Base font settings */
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  /* Theme Colors */
-  --primary-color: #FFA500; /* Orange */
-  --secondary-color: #FFFFFF; /* White for text */
-  --background-color: #1a1a1a; /* Dark background */
-  --card-background: #242424; /* Slightly lighter card background */
-  --hover-color: #FFC107; /* Lighter orange for hover */
+  /* --- Theme Colors --- */
+  /* Define base colors for the dark theme */
+  --primary-color: #FFA500; /* Orange - Main accent color */
+  --secondary-color: #FFFFFF; /* White - Default text color */
+  --background-color: #1a1a1a; /* Dark Gray - Main background */
+  --card-background: #242424; /* Lighter Dark Gray - Background for cards/sections */
+  --hover-color: #FFC107; /* Lighter Orange - Hover effect for primary elements */
 
-  /* Default to dark theme variables */
+  /* --- Current Theme Variables --- */
+  /* These variables will hold the active theme's colors. Default to dark theme. */
   --current-primary: var(--primary-color);
   --current-secondary: var(--secondary-color);
   --current-background: var(--background-color);
   --current-card-background: var(--card-background);
   --current-hover: var(--hover-color);
 
+  /* Apply default theme colors */
   color: var(--current-secondary);
   background-color: var(--current-background);
 
+  /* Font rendering optimizations */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Light Theme Variables */
+/* --- Light Theme --- */
+/* Styles applied when the body has the 'light-theme' class */
 body.light-theme {
-  --current-primary: #FFA500; /* Orange for light theme primary */
-  --current-secondary: #1a1a1a; /* Dark text for light theme (using dark theme bg color for contrast) */
-  --current-background: #e0dddd; /* Try pure white for main background */
-  --current-card-background: #f8f9fa; /* Light grey for cards */
-  --current-hover: #e69500; /* Slightly darker orange for hover */
+  /* Override current theme variables for light mode */
+  --current-primary: #FFA500;   /* Orange - Keep primary accent */
+  --current-secondary: #1a1a1a; /* Dark Gray - Text color for readability */
+  --current-background: #e0dddd; /* Light Gray - Main background */
+  --current-card-background: #f8f9fa; /* Very Light Gray/Off-white - Card background */
+  --current-hover: #e69500;   /* Darker Orange - Hover effect */
 
+  /* Apply light theme colors */
   color-scheme: light;
   color: var(--current-secondary);
   background-color: var(--current-background);
 }
 
-/* Add text outline to specific headings in light mode */
+/* Add text outline to specific headings in light mode for better contrast */
 body.light-theme #projects h2,
 body.light-theme #contact h2 {
-  /* Replace text-shadow with text-stroke */
-  -webkit-text-stroke: 0.25px var(--current-secondary); /* 0.25px width, use dark text color */
-  /* text-stroke: 1px var(--current-secondary); Removed due to validation error */
+  -webkit-text-stroke: 0.5px var(--current-secondary); /* Thin dark outline */
 }
 
 /* Adjust background image opacity for light theme */
 body.light-theme::before {
-  opacity: 0.1; /* Make background image much fainter in light mode */
+  opacity: 0.1; /* Make background image much fainter */
 }
 
-/* Ensure navbar and card backgrounds use the correct variable */
+/* --- Light Theme Element Overrides --- */
+/* Ensure specific elements use the correct light theme variables */
+
 body.light-theme .navbar {
   background-color: var(--current-background);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow for light theme */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow */
 }
 
 body.light-theme .card {
   background-color: var(--current-card-background);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); /* Subtle shadow for cards */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); /* Subtle shadow */
 }
 
-/* Ensure navbar brand text is readable */
 body.light-theme .navbar-brand span {
-  color: var(--current-secondary);
+  color: var(--current-secondary); /* Dark text */
 }
 
-/* Ensure skills list items are readable */
 body.light-theme .skills-list li {
   background-color: var(--current-card-background);
   color: var(--current-secondary);
   border: 1px solid var(--current-primary);
 }
 
-/* Ensure footer is readable */
 body.light-theme .portfolio-footer {
   background-color: var(--current-card-background);
   color: var(--current-secondary);
 }
 
-/* Ensure navbar links are dark in light mode */
+/* Navbar links in light mode */
 body.light-theme .navbar-links a,
 body.light-theme .navbar-links-mobile a {
-  color: var(--current-secondary);
+  color: var(--current-secondary); /* Dark text */
 }
 
 body.light-theme .navbar-links a:hover,
 body.light-theme .navbar-links-mobile a:hover {
-  color: var(--current-primary); /* Keep hover color orange */
+  color: var(--current-primary); /* Orange hover */
 }
 
-/* Social Icon Swapping for Light Theme */
-/* Remove the previous attempt using content on img */
+/* --- Social Icon Swapping for Light Theme --- */
+/* Use background images for social icons in light theme for better control */
+
+/* Reset potential conflicting rules */
 body.light-theme .social-link.github-link img,
 body.light-theme .social-link.linkedin-link img {
-    content: none; /* Remove potentially problematic rule */
+    content: none;
 }
 
-/* Style the links for background images */
+/* Base styles for social link containers */
 .social-link {
-    display: inline-block; /* Needed for background image sizing */
-    position: relative; /* Needed for positioning img/pseudo-elements if used */
-    width: 24px;  /* Match image size */
-    height: 24px; /* Match image size */
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
     vertical-align: middle;
-    /* Ensure link color doesn't affect background */
-    color: transparent; 
+    color: transparent; /* Hide potential text content */
 }
 
+/* Default state for social icon images (used in dark theme) */
 .social-link img {
-    display: block; /* Make image fill the link container */
+    display: block;
     width: 100%;
     height: 100%;
-    transition: opacity 0.25s ease-in-out; /* Smooth fade */
-    opacity: 1; /* Ensure visible by default */
+    transition: opacity 0.25s ease-in-out;
+    opacity: 1;
 }
 
+/* Apply background image for GitHub icon in light theme */
 body.light-theme .social-link.github-link {
-    background-image: url('/media/github-mark.png');
+    background-image: url('/media/github-mark.png'); /* Dark icon */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+/* Apply background image for LinkedIn icon in light theme */
 body.light-theme .social-link.linkedin-link {
-    background-image: url('/media/InBug-Black.png');
+    background-image: url('/media/InBug-Black.png'); /* Dark icon */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-/* Dark Theme: Ensure no background image is set (explicitly) */
+/* Ensure no background image is set by default (for dark theme) */
 .social-link.github-link,
 .social-link.linkedin-link {
     background-image: none;
 }
 
-/* Re-apply dark theme background overrides if needed, or ensure they are not applied in light theme */
-/* Example: If dark theme explicitly set backgrounds, reset them here */
-/* (The above rules should handle it by setting background-image: none by default) */
+/* --- Global Element Styles --- */
 
+/* Default link styles */
 a {
   font-weight: 500;
   color: var(--current-primary);
@@ -152,37 +162,37 @@ a:hover {
   color: var(--current-hover);
 }
 
+/* Body base styles */
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
   position: relative; /* Needed for pseudo-element positioning */
-  z-index: 0; /* Ensure body is above the pseudo-element */
+  z-index: 0;
 }
 
+/* Body pseudo-element for background image with parallax effect */
 body::before {
   content: '';
-  position: fixed; /* Fixed position for parallax */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1; /* Place behind content */
-
-  /* Apply background image styles here */
-  background-image: url('/techbackground.jpeg'); /* Updated path */
+  z-index: -1; /* Place behind all other content */
+  background-image: url('/techbackground.jpeg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  /* Apply transparency */
-  opacity: 0.4; /* Adjust value between 0 (transparent) and 1 (opaque) */
+  opacity: 0.4; /* Default opacity (for dark theme) */
 }
 
+/* Default heading color */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--current-primary); /* Headings use primary color */
+  color: var(--current-primary);
 }
 
+/* Default button styles */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -190,8 +200,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--current-primary); /* Use current primary */
-  color: #FFFFFF; /* Ensure button text is readable in both themes */
+  background-color: var(--current-primary);
+  color: #FFFFFF; /* White text for contrast on orange */
   cursor: pointer;
   transition: background-color 0.25s, border-color 0.25s;
 }
@@ -201,20 +211,20 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color; /* Keep default focus outline */
+  outline: 4px auto -webkit-focus-ring-color; /* Standard focus outline */
 }
 
-/* Update other elements as needed, e.g., card background */
+/* --- Theme-Aware Element Styles --- */
+/* Ensure elements correctly use the 'current-' theme variables */
+
 .card {
-  background-color: var(--current-card-background); /* Use current card background */
+  background-color: var(--current-card-background);
 }
 
-/* Update navbar background */
 .navbar {
   background-color: var(--current-background);
 }
 
-/* Update navbar links */
 .navbar-links a {
   color: var(--current-secondary);
 }
@@ -223,7 +233,6 @@ button:focus-visible {
   color: var(--current-primary);
 }
 
-/* Update mobile navbar links background */
 .navbar-links-mobile {
   background-color: var(--current-background);
   border-top: 1px solid var(--current-primary);
@@ -237,29 +246,25 @@ button:focus-visible {
   color: var(--current-primary);
 }
 
-/* Update toggler span color */
 .navbar-toggler span {
   background-color: var(--current-primary);
 }
 
-/* Ensure navbar brand text uses the correct secondary color */
 .navbar-brand span {
   color: var(--current-secondary);
 }
 
-/* Update theme toggle button color */
 .theme-toggle-button {
   color: var(--current-primary);
 }
 
-/* Update project card elements */
 .project-card h3 {
   color: var(--current-primary);
 }
 
 .project-link {
   background-color: var(--current-primary);
-  color: var(--current-background); /* Text color based on background */
+  color: var(--current-background); /* Contrast against primary bg */
 }
 
 .project-link:hover {
@@ -267,21 +272,21 @@ button:focus-visible {
   color: var(--current-background);
 }
 
+/* Ensure project link text is white in light theme for contrast */
 body.light-theme .project-link {
-  /* Ensure contrast on light cards with orange button */
-  color: #FFFFFF; /* White text on orange button */
+  color: #FFFFFF;
 }
 
+/* Ensure general button text is white in light theme for contrast */
 body.light-theme .button {
-  /* Ensure contrast on light background with orange button */
-  color: #FFFFFF; /* White text on orange button */
+  color: #FFFFFF;
 }
 
 .project-screenshot {
   border: 2px solid var(--current-primary);
 }
 
-/* Update slick dots */
+/* Slick carousel dots */
 .slick-dots li button:before {
   color: var(--current-primary);
 }
@@ -290,36 +295,35 @@ body.light-theme .button {
   color: var(--current-primary);
 }
 
-/* Update slick arrows */
+/* Slick carousel arrows */
 .slick-prev:before,
 .slick-next:before {
   color: var(--current-primary);
 }
 
-/* Update skills list */
+/* Skills list items */
 .skills-list li {
   background-color: var(--current-card-background);
   color: var(--current-secondary);
   border: 1px solid var(--current-primary);
 }
 
-/* Update contact link */
+/* Contact link */
 .contact-link {
   color: var(--current-primary);
 }
 
-/* Update footer */
+/* Footer */
 .portfolio-footer {
   background-color: var(--current-card-background);
   color: var(--current-secondary);
 }
 
+/* Social links in footer */
 .social-link {
-  color: var(--current-primary); /* Keep primary color for links */
-  /* Add transition if not already present */
+  color: var(--current-primary);
   transition: color 0.25s;
 }
 
-social-link:hover {
-  color: var(--current-hover); /* Use hover color */
-}
+/* Removed invalid social-link:hover rule */
+/* Hover effect for social links is handled by the general 'a:hover' rule */

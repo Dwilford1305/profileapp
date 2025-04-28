@@ -1,3 +1,4 @@
+/* Root element styling */
 #root {
   width: 80%; /* Change max-width to width 80% */
   margin: 0 auto;
@@ -5,6 +6,7 @@
   text-align: center; /* Adjust as needed for portfolio layout */
 }
 
+/* General styling for card-like elements */
 .card {
   padding: 2em;
   background-color: var(--card-background); /* Use card background color */
@@ -13,117 +15,129 @@
   margin-top: 2rem; /* Add some spacing */
 }
 
-/* Add any additional portfolio-specific styles below */
+/* --- Basic Layout --- */
 
-/* Basic Layout */
+/* Main content container */
 .portfolio-main {
-  padding-top: 60px; /* Adjust based on navbar height */
+  padding-top: 60px; /* Add padding to prevent content from hiding behind the fixed navbar */
 }
 
+/* Styling for each major section */
 .portfolio-section {
   padding: 3rem 2rem;
   margin-bottom: 2rem;
-  scroll-margin-top: 70px; /* Offset for fixed navbar height */
+  scroll-margin-top: 70px; /* Offset scroll target position to account for fixed navbar height */
 }
 
+/* Section headings */
 .portfolio-section h2 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
 
-/* Styles for Scroll Reveal Animation */
+/* --- Styles for Scroll Reveal Animation --- */
+
+/* Container for sections that will animate on scroll */
 .portfolio-section-container {
   opacity: 0; /* Start hidden */
   transform: translateY(20px); /* Start slightly lower */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth fade-in and move-up transition */
 }
 
+/* Class added by IntersectionObserver when the element is in view */
 .portfolio-section-container.visible {
   opacity: 1; /* Fade in */
   transform: translateY(0); /* Move to original position */
 }
 
-/* Navbar */
+/* --- Navbar --- */
+
+/* Fixed navigation bar styles */
 .navbar {
-  position: fixed; /* Stick to top */
+  position: fixed; /* Stick to the top of the viewport */
   top: 0;
   left: 0;
-  width: 100%; /* Navbar background stays full width */
-  background-color: var(--background-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  padding: 0 1rem; /* Add some padding for edges if needed */
+  width: 100%; /* Span the full viewport width */
+  background-color: var(--background-color); /* Use theme background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  z-index: 1000; /* Ensure navbar stays above other content */
+  padding: 0 1rem; /* Padding on the sides */
 }
 
-/* New container for navbar content */
+/* Inner container to constrain navbar content width */
 .navbar-content {
-  width: 80%; /* Constrain content width */
-  margin: 0 auto; /* Center the content */
+  width: 80%; /* Match the main content width */
+  margin: 0 auto; /* Center the content horizontally */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space out brand and links/toggles */
   align-items: center;
-  min-height: 60px; /* Ensure consistent height */
+  min-height: 60px; /* Consistent navbar height */
 }
 
-/* Add styles for navbar brand */
+/* Navbar brand (logo/name) container */
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Add some space between image and text */
+  gap: 0.5rem; /* Space between headshot and name */
 }
 
+/* Headshot image within the brand */
 .brand-headshot {
-  height: 40px; /* Adjust height as needed */
-  width: auto; /* Maintain aspect ratio */
-  border-radius: 50%; /* Make it circular */
-  object-fit: cover; /* Ensure image covers the area well */
+  height: 40px;
+  width: auto;
+  border-radius: 50%; /* Circular image */
+  object-fit: cover; /* Ensure image covers the area nicely */
 }
 
-/* Desktop right group */
+/* Container for right-aligned items on desktop (theme toggle, links) */
 .navbar-right-group {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1rem; /* Space between items */
 }
 
-/* Hide mobile toggles wrapper on desktop */
+/* Hide mobile-specific toggles container on desktop */
 .navbar-mobile-toggles {
   display: none;
 }
 
-/* Hide mobile theme toggle on desktop */
+/* Hide mobile theme toggle button on desktop */
 .theme-toggle-button.mobile-toggle {
   display: none;
 }
 
-/* Ensure desktop theme toggle is visible */
+/* Ensure desktop theme toggle button is visible */
 .theme-toggle-button.desktop-toggle {
-  display: inline-flex; /* Or block, depending on desired layout */
+  display: inline-flex;
 }
 
-/* Keep original navbar-links styling for desktop */
+/* Desktop navigation links list */
 .navbar-links {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex; /* Ensure links are horizontal on desktop */
+  display: flex; /* Arrange links horizontally */
 }
 
+/* Individual desktop navigation link item */
 .navbar-links li {
-  display: inline-block; /* Display items inline */
-  margin-left: 1.2rem; /* Adjust spacing as needed */
+  display: inline-block;
+  margin-left: 1.2rem;
 }
 
+/* Remove margin from the first link item */
 .navbar-links li:first-child {
-  margin-left: 0; /* No margin for the first item */
+  margin-left: 0;
 }
 
+/* Desktop navigation link style */
 .navbar-links a {
   color: var(--secondary-color);
   text-decoration: none;
   transition: color 0.2s;
 }
 
+/* Desktop navigation link hover style */
 .navbar-links a:hover {
   color: var(--primary-color);
 }
@@ -133,151 +147,168 @@
   display: none;
 }
 
-/* Hamburger Toggler Button - Hidden on Desktop */
+/* Hamburger menu button (hidden on desktop) */
 .navbar-toggler {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  margin-left: 1rem; /* Space from brand */
+  margin-left: 1rem;
 }
 
+/* Lines within the hamburger button */
 .navbar-toggler span {
   display: block;
   width: 25px;
   height: 3px;
   background-color: var(--primary-color);
   margin: 5px 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Animation for potential future active state */
 }
 
-/* Theme Toggle Button Style */
+/* Theme toggle button styling */
 .theme-toggle-button {
   background: none;
   border: none;
   color: var(--primary-color);
   cursor: pointer;
-  font-size: 1.5rem; /* Adjust size */
+  font-size: 1.5rem;
   padding: 0.5rem;
-  display: inline-flex; /* Helps with alignment */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Theme toggle button hover effect */
 .theme-toggle-button:hover {
   opacity: 0.8;
 }
 
-/* Light theme adjustments for toggles if needed */
+/* --- Light Theme Specific Navbar Adjustments --- */
+
+/* Ensure theme toggle color remains primary in light mode */
 .light-theme .theme-toggle-button {
   color: var(--primary-color);
 }
 
+/* Ensure hamburger lines use primary color in light mode */
 .light-theme .navbar-toggler span {
   background-color: var(--primary-color);
 }
 
+/* Mobile menu background and border in light mode */
 .light-theme .navbar-links-mobile {
   background-color: var(--background-color);
   border-top: 1px solid var(--primary-color);
 }
 
+/* Mobile menu item border in light mode */
 .light-theme .navbar-links-mobile li {
   border-bottom: 1px solid var(--card-background);
 }
 
+/* Mobile menu link color in light mode */
 .light-theme .navbar-links-mobile a {
   color: var(--secondary-color);
 }
 
+/* Mobile menu link hover color in light mode */
 .light-theme .navbar-links-mobile a:hover {
   color: var(--primary-color);
 }
 
-/* Projects Section */
-/* Add styles for the carousel container and slides */
+/* --- Projects Section --- */
+
+/* Container for the project carousel */
 .project-carousel {
-  margin: 0 auto; /* Center carousel if needed */
-  /* max-width: 90%; */ /* Optional: constrain width */
+  margin: 0 auto; /* Center carousel */
 }
 
-/* Removed empty ruleset for .project-slide */
-
+/* Individual project card within a carousel slide */
 .project-card {
-  /* Ensure cards take full height within the slide if needed */
-  height: 100%;
+  height: 100%; /* Ensure cards fill slide height */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Pushes link to bottom */
-  margin: 0 0.75rem; /* Adjust value as needed */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Add transitions */
+  justify-content: space-between; /* Push link to the bottom */
+  margin: 0 0.75rem; /* Horizontal spacing between cards */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effects */
 }
 
+/* Project card heading */
 .project-card h3 {
   color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
+/* Project card hover effect */
 .project-card:hover {
-  transform: scale(1.03); /* Scale up slightly */
+  transform: scale(1.03); /* Slightly enlarge card */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhance shadow */
 }
 
+/* Link/button within a project card */
 .project-link {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.5em 1em;
   background-color: var(--primary-color);
-  color: var(--background-color); /* Dark text */
+  color: var(--background-color); /* Text color for contrast on primary background */
   border-radius: 4px;
   text-decoration: none;
-  transition: background-color 0.2s, color 0.2s, transform 0.2s ease-out; /* Add transform transition */
-  align-self: center; /* Center the button */
+  transition: background-color 0.2s, color 0.2s, transform 0.2s ease-out; /* Smooth hover effects */
+  align-self: center; /* Center the link horizontally */
 }
 
+/* Project link hover effect */
 .project-link:hover {
-  background-color: var(--hover-color); /* Lighter orange background */
-  color: var(--background-color); /* Keep dark text color for contrast */
-  transform: translateY(-3px); /* Move up slightly */
+  background-color: var(--hover-color);
+  color: var(--background-color);
+  transform: translateY(-3px); /* Slight upward movement */
 }
 
-/* Styles for the project screenshot */
+/* Project screenshot image */
 .project-screenshot {
-  width: 100%; /* Make image responsive */
-  aspect-ratio: 16 / 9; /* Maintain aspect ratio (adjust as needed) */
-  object-fit: cover; /* Cover the area, cropping if necessary */
-  border-radius: 4px; /* Optional: match card rounding */
-  margin-bottom: 1rem; /* Space below image */
-  border: 2px solid var(--primary-color); /* Add thin orange border */
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Maintain a 16:9 aspect ratio */
+  object-fit: cover; /* Cover the area, cropping if needed */
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 2px solid var(--primary-color); /* Border matching theme */
 }
 
-/* Customize slick dots */
+/* --- Slick Carousel Customization --- */
+
+/* Carousel navigation dots */
 .slick-dots li button:before {
-  font-size: 12px; /* Adjust dot size */
-  color: var(--primary-color); /* Orange dots */
-  opacity: 0.5;
+  font-size: 12px;
+  color: var(--primary-color);
+  opacity: 0.5; /* Dim inactive dots */
 }
 
+/* Active carousel navigation dot */
 .slick-dots li.slick-active button:before {
   opacity: 1;
-  color: var(--primary-color); /* Active dot color */
+  color: var(--primary-color);
 }
 
-/* Customize slick arrows (optional) */
+/* Carousel previous/next arrows */
 .slick-prev:before,
 .slick-next:before {
-  color: var(--primary-color); /* Orange arrows */
-  font-size: 24px; /* Adjust arrow size */
+  color: var(--primary-color);
+  font-size: 24px;
 }
 
-/* Skills Section */
+/* --- Skills Section --- */
+
+/* List container for skills */
 .skills-list {
   list-style: none;
   padding: 0;
   text-align: center;
 }
 
+/* Individual skill item */
 .skills-list li {
   display: inline-block;
   background-color: var(--card-background);
@@ -288,7 +319,9 @@
   border: 1px solid var(--primary-color);
 }
 
-/* Contact Section */
+/* --- Contact Section --- */
+
+/* Email contact link */
 .contact-link {
   display: block;
   margin-top: 1rem;
@@ -296,7 +329,9 @@
   color: var(--primary-color);
 }
 
-/* Footer */
+/* --- Footer --- */
+
+/* Footer section styling */
 .portfolio-footer {
   text-align: center;
   padding: 1.5rem;
@@ -306,34 +341,37 @@
   font-size: 0.9em;
 }
 
+/* Container for social media links in the footer */
 .social-links {
-  margin-bottom: 1rem; /* Space between icons and copyright */
+  margin-bottom: 1rem; /* Space above copyright text */
 }
 
+/* Individual social media link */
 .social-link {
-  color: var(--primary-color); /* Use theme color */
+  color: var(--primary-color);
   text-decoration: none;
-  margin: 0 0.75rem; /* Space between icons */
-  font-size: 1.2em; /* Adjust size as needed */
-  display: inline-block; /* Ensure link behaves like a block */
-  vertical-align: middle; /* Re-add vertical align if needed */
+  margin: 0 0.75rem; /* Spacing between icons */
+  font-size: 1.2em;
+  display: inline-block;
+  vertical-align: middle;
 }
 
+/* Social media link hover (color is handled by theme variables) */
 .social-link:hover {
-  color: var(--primary-color); /* Keep theme color */
+  color: var(--primary-color); /* Explicitly keep primary color on hover */
 }
 
-/* Style for the icons */
+/* Social media icon image */
 .social-icon {
-  height: 24px; /* Reduce height */
-  width: auto; /* Maintain aspect ratio */
-  vertical-align: middle; /* Align icon within the link */
-  transition: transform 0.2s ease-out; /* Add transition directly to the icon */
+  height: 24px;
+  width: auto;
+  vertical-align: middle;
+  transition: transform 0.2s ease-out; /* Smooth scale effect on hover */
 }
 
-/* Apply transform to the icon when the link is hovered */
+/* Apply scale effect to the icon when the link is hovered */
 .social-link:hover .social-icon {
-  transform: scale(1.3); /* Apply scale to the icon, increased slightly */
+  transform: scale(1.3); /* Enlarge icon slightly */
 }
 
 /* --- Responsive Design --- */
@@ -341,7 +379,7 @@
 /* Medium screens (tablets, smaller laptops) */
 @media (max-width: 992px) {
   #root {
-    width: 80%; /* Use more width on medium screens */
+    width: 80%;
     padding: 1.5rem;
   }
 
@@ -354,76 +392,72 @@
   }
 
   .navbar-content {
-    width: 80%; /* Match root width */
+    width: 80%;
   }
 
   .navbar-links li {
-    margin-left: 1rem; /* Further reduce margin */
+    margin-left: 1rem;
   }
 
-  /* Removed empty ruleset for .project-slide */
-
   .project-card {
-    margin: 0 0.5rem; /* Adjust margin for medium screens */
+    margin: 0 0.5rem;
   }
 }
 
 /* Small screens (mobile phones) */
 @media (max-width: 768px) {
   #root {
-    width: 90%; /* Use full width on mobile */
+    width: 90%;
     padding: 1rem;
   }
 
   .portfolio-main {
-    padding-top: 50px; /* Adjust if navbar height changes */
+    padding-top: 50px; /* Adjust for potentially smaller mobile navbar */
   }
 
+  /* Adjust navbar layout for mobile */
   .navbar {
-    padding: 0; /* Remove padding, content handles it */
-    flex-direction: row; 
+    padding: 0;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center; /* Align brand and toggler */
+    align-items: center;
   }
 
   .navbar-content {
-    width: 90%; /* Use full width inside navbar */
-    padding: 0.8rem 1rem; /* Add padding back here */
-    min-height: 50px; /* Adjust height for mobile */
+    width: 90%;
+    padding: 0.8rem 1rem;
+    min-height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  /* Hide desktop right group on mobile */
+  /* Hide desktop-specific navbar elements */
   .navbar-right-group {
     display: none;
   }
-
-  /* Show mobile toggles wrapper and style it */
-  .navbar-mobile-toggles {
-    display: flex; /* Use flex to align items */
-    align-items: center;
-    gap: 0.5rem; /* Space between theme toggle and hamburger */
-  }
-
-  /* Ensure mobile theme toggle is visible */
-  .theme-toggle-button.mobile-toggle {
-    display: inline-flex; /* Or block */
-  }
-
-  /* Hide desktop theme toggle on mobile */
   .theme-toggle-button.desktop-toggle {
     display: none;
   }
-
-  /* Hamburger Toggler Button - Ensure it's displayed */
-  .navbar-toggler {
-    display: block; /* Make sure it's visible */
-    order: initial; /* Reset order */
+  .navbar-links {
+    display: none;
   }
 
-  /* Style the separate mobile links container */
+  /* Show mobile-specific navbar elements */
+  .navbar-mobile-toggles {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .theme-toggle-button.mobile-toggle {
+    display: inline-flex;
+  }
+  .navbar-toggler {
+    display: block; /* Show hamburger button */
+    order: initial;
+  }
+
+  /* Styling for the mobile navigation menu panel */
   .navbar-links-mobile {
     display: none; /* Hidden by default */
     list-style: none;
@@ -436,13 +470,15 @@
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-top: 1px solid var(--primary-color);
-    z-index: 999; /* Below navbar but above content */
+    z-index: 999; /* Ensure it's above content but below navbar */
   }
 
+  /* Class to show the mobile menu */
   .navbar-links-mobile.open {
-    display: block; /* Show when open */
+    display: block;
   }
 
+  /* Individual mobile menu item */
   .navbar-links-mobile li {
     display: block;
     text-align: center;
@@ -450,45 +486,46 @@
     border-bottom: 1px solid var(--card-background);
   }
 
+  /* Remove border from last mobile menu item */
   .navbar-links-mobile li:last-child {
     border-bottom: none;
   }
 
+  /* Mobile menu link */
   .navbar-links-mobile a {
     display: block;
     width: 100%;
-    color: var(--secondary-color); /* Ensure correct color */
+    color: var(--secondary-color);
   }
 
+  /* Mobile menu link hover */
   .navbar-links-mobile a:hover {
     color: var(--primary-color);
   }
 
-  /* Hide the desktop links ul completely */
-  .navbar-links {
-    display: none;
-  }
-
+  /* Adjust section padding and scroll margin for mobile */
   .portfolio-section {
     padding: 1.5rem 0.5rem;
-    scroll-margin-top: 60px; /* Adjust offset for mobile navbar height */
+    scroll-margin-top: 60px;
   }
 
+  /* Slightly smaller headings on mobile */
   .portfolio-section h2 {
-    font-size: 1.8em; /* Slightly smaller headings */
+    font-size: 1.8em;
   }
 
-  /* Removed empty ruleset for .project-slide */
-
+  /* Adjust project card margin for mobile */
   .project-card {
-    margin: 0 0.25rem; /* Adjust margin for small screens */
+    margin: 0 0.25rem;
   }
 
+  /* Adjust skill item padding/margin for mobile */
   .skills-list li {
     padding: 0.4em 0.8em;
     margin: 0.4em;
   }
 
+  /* Adjust footer padding/font size for mobile */
   .portfolio-footer {
     padding: 1rem;
     font-size: 0.8em;
