@@ -398,6 +398,23 @@
   background-color: transparent; /* Remove green debugging background */
   visibility: visible; /* Ensure icons are visible */
   opacity: 0.3; /* Ensure icons are not transparent */
+  pointer-events: none; /* Prevent interaction */
+}
+
+/* Add randomized positioning to avoid overlap */
+.parallax-icon:nth-child(odd) {
+  left: calc(10% + 5vw * var(--random-offset));
+  top: calc(20% + 10vh * var(--random-offset));
+}
+
+.parallax-icon:nth-child(even) {
+  left: calc(70% - 5vw * var(--random-offset));
+  top: calc(50% - 10vh * var(--random-offset));
+}
+
+/* Define a CSS variable for random offset */
+:root {
+  --random-offset: 1; /* Default value, can be dynamically updated */
 }
 
 /* Floating animation for icons */
