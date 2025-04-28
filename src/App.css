@@ -400,6 +400,13 @@
   pointer-events: none; /* Prevent interaction */
 }
 
+/* Position parallax icons using data-x and data-y attributes */
+.parallax-icon {
+  position: absolute;
+  left: attr(data-x percent);
+  top: attr(data-y percent);
+}
+
 /* Add randomized positioning to avoid overlap */
 .parallax-icon:nth-child(odd) {
   left: calc(10% + 5vw * var(--random-offset));

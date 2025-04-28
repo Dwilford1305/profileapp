@@ -239,7 +239,6 @@ function Contact({ theme }: { theme: string }) {
  * Displays a set of icons at random positions without scroll effects.
  */
 function ParallaxIcons() {
-  // Generate random positions for each icon only once
   const techIcons = [
     'Android Studio.png', 'CSharp.png', 'CSS3.png', 'Git.png', 'HTML5.png',
     'Java.png', 'JavaScript.png', 'jQuery.png', 'Linux.png', 'MongoDB.png',
@@ -247,12 +246,23 @@ function ParallaxIcons() {
   ];
   const positionsRef = useRef(
     Array.from({ length: techIcons.length }, () => ({
-      x: Math.random() * 90 + 5, // Random x position between 5% and 95%
-      y: Math.random() * 90 + 5  // Random y position between 5% and 95%
+      x: Math.random() * 90 + 5, // 5% to 95% left
+      y: Math.random() * 90 + 5  // 5% to 95% top
     }))
   );
 
-  // No scroll effect, just render icons at their random positions
+  useEffect(() => {
+    // After render, set left/top via JS to avoid inline styles in JSX
+    const icons = document.querySelectorAll('.parallax-icon');
+    positionsRef.current.forEach((pos, idx) => {
+      const icon = icons[idx] as HTMLElement;
+      if (icon) {
+        icon.style.left = pos.x + '%';
+        icon.style.top = pos.y + '%';
+      }
+    });
+  }, []);
+
   return (
     <div className="parallax-container">
       {techIcons.map((icon, index) => (
@@ -261,7 +271,8 @@ function ParallaxIcons() {
           src={`./media/techicons/${icon}`}
           alt={icon.replace('.png', '')}
           className="parallax-icon"
-          style={{ left: positionsRef.current[index].x + '%', top: positionsRef.current[index].y + '%' }}
+          data-x={positionsRef.current[index].x}
+          data-y={positionsRef.current[index].y}
         />
       ))}
     </div>
