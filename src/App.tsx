@@ -151,8 +151,8 @@ function Projects() {
           <div className="project-slide">
             <div className="project-card card">
               <h3>Project Title 1</h3>
-              <img src="https://via.placeholder.com/400x200?text=Project+1+Screenshot" alt="Project 1 Screenshot" className="project-screenshot" />
-              <p>Brief description of the project. Technologies used: React, Node.js, etc.</p>
+              <img src="/media/comingsoon.png" alt="Project 1 Coming Soon Sign" className="project-screenshot" />
+              <p>Brief description of the project. Technologies used etc.</p>
               <a href="#" className="project-link">View Details</a> {/* TODO: Update href */}
             </div>
           </div>
@@ -160,8 +160,8 @@ function Projects() {
           <div className="project-slide">
             <div className="project-card card">
               <h3>Project Title 2</h3>
-              <img src="https://via.placeholder.com/400x200?text=Project+2+Screenshot" alt="Project 2 Screenshot" className="project-screenshot" />
-              <p>Brief description of the project. Technologies used: React Native, Firebase, etc.</p>
+              <img src="/media/comingsoon.png" alt="Project 2 Coming Soon Sign" className="project-screenshot" />
+              <p>Brief description of the project. Technologies used etc.</p>
               <a href="#" className="project-link">View Details</a> {/* TODO: Update href */}
             </div>
           </div>
@@ -169,8 +169,8 @@ function Projects() {
           <div className="project-slide">
             <div className="project-card card">
               <h3>Project Title 3</h3>
-              <img src="https://via.placeholder.com/400x200?text=Project+3+Screenshot" alt="Project 3 Screenshot" className="project-screenshot" />
-              <p>Brief description of the new project. Technologies used: Vite, TypeScript, etc.</p>
+              <img src="/media/comingsoon.png" alt="Project 3 Coming Soon Sign" className="project-screenshot" />
+              <p>Brief description of the project. Technologies used etc.</p>
               <a href="#" className="project-link">View Details</a> {/* TODO: Update href */}
             </div>
           </div>
