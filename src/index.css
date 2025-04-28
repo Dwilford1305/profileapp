@@ -180,7 +180,7 @@ body::before {
   right: 0;
   bottom: 0;
   z-index: -1; /* Place behind all other content */
-  background-image: url('/techbackground.jpeg');
+  background-image: url('/techbackorange.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
