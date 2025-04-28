@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode } from 'react'; // Consolidate ReactNode import
+import { useState, useEffect, ReactNode, useRef } from 'react'; // Consolidate ReactNode import
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -236,50 +236,34 @@ function Contact({ theme }: { theme: string }) {
 
 /**
  * ParallaxIcons Component
- * Displays a set of icons with a parallax effect based on scroll position.
- * Icons are scattered randomly throughout the midground.
+ * Displays a set of icons at random positions without scroll effects.
  */
 function ParallaxIcons() {
-  useEffect(() => {
-    const handleScroll = () => {
-      const icons = document.querySelectorAll('.parallax-icon');
-      icons.forEach((icon, index) => {
-        const speed = (index + 1) * 0.1; // Adjust speed based on index
-        const offset = window.scrollY * speed;
-        (icon as HTMLElement).style.transform = `translateY(${offset}px)`;
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+  // Generate random positions for each icon only once
   const techIcons = [
     'Android Studio.png', 'CSharp.png', 'CSS3.png', 'Git.png', 'HTML5.png',
     'Java.png', 'JavaScript.png', 'jQuery.png', 'Linux.png', 'MongoDB.png',
     'MySQL.png', 'Node.js.png', 'React.png', 'Swift.png', 'TypeScript.png', 'Vite.png'
   ];
+  const positionsRef = useRef(
+    Array.from({ length: techIcons.length }, () => ({
+      x: Math.random() * 90 + 5, // Random x position between 5% and 95%
+      y: Math.random() * 90 + 5  // Random y position between 5% and 95%
+    }))
+  );
 
-  const generateRandomPosition = () => {
-    const x = Math.random() * 90 + 5; // Ensure icons stay within 5% to 95% horizontally
-    const y = Math.random() * 90 + 5; // Ensure icons stay within 5% to 95% vertically
-    return { x, y };
-  };
-
+  // No scroll effect, just render icons at their random positions
   return (
     <div className="parallax-container">
-      {techIcons.map((icon, index) => {
-        const { x, y } = generateRandomPosition();
-        return (
-          <img
-            key={index}
-            src={`./media/techicons/${icon}`} // Adjusted path to match Vite's public folder structure
-            alt={icon.replace('.png', '')}
-            className="parallax-icon"
-            style={{ left: `${x}%`, top: `${y}%` }}
-          />
-        );
-      })}
+      {techIcons.map((icon, index) => (
+        <img
+          key={index}
+          src={`./media/techicons/${icon}`}
+          alt={icon.replace('.png', '')}
+          className="parallax-icon"
+          style={{ left: positionsRef.current[index].x + '%', top: positionsRef.current[index].y + '%' }}
+        />
+      ))}
     </div>
   );
 }
