@@ -203,6 +203,9 @@ function Contact({ theme }: { theme: string }) {
           <img src={githubIcon} alt="GitHub Profile" className="social-icon" />
         </a>
       </div>
+      <a href="/media/DWilford_Red.pdf" download="DerekWilford_Resume.pdf" className="resume-download-button button">
+        Download Resume
+      </a>
     </section>
   );
 }
