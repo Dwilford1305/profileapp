@@ -69,6 +69,9 @@ A modern, professional portfolio web application built with React, TypeScript, a
 
 You can deploy the `dist` folder to any static hosting service (Netlify, Vercel, GitHub Pages, etc.).
 
+## Deployment Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e6da8c49-a9ba-4d2a-9ea6-dbfcadd6a773/deploy-status)](https://app.netlify.com/sites/stately-souffle-fa03bf/deploys)
+
 ## License
 
 This project is for personal portfolio use by Derek Wilford.
