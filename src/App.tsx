@@ -131,10 +131,10 @@ function Projects() {
           {/* TODO: Replace placeholder projects with actual data */}
           <div className="project-slide">
             <div className="project-card card">
-              <h3>Project Title 1</h3>
-              <img src="/media/comingsoon.png" alt="Project 1 Coming Soon Sign" className="project-screenshot" />
-              <p>Brief description of the project. Technologies used etc.</p>
-              <a href="#" className="project-link">View Details</a>
+              <h3>Neighborhood Watch App</h3>
+              <img src="/media/nbrhd-watch.png" alt="Project 1 Coming Soon Sign" className="project-screenshot" />
+              <p>A community safety platform built with React, Vite, and Material UI. Features incident reporting, discussion boards, alerts, blog posts, and Auth0 authentication with role-based access. Includes an admin dashboard for management.</p>
+              <a href="https://neighborhood-cop.netlify.app/" className="project-link">View Details</a>
             </div>
           </div>
           <div className="project-slide">
