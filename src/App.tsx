@@ -129,22 +129,34 @@ function Projects() {
       <div className="project-carousel">
         <Slider {...settings}>
           {/* TODO: Replace placeholder projects with actual data */}
+
+          <div className="project-slide">
+            <div className="project-card card">
+              <h3>Community Hub PWA</h3>
+              <a href="https://allthingswetaskiwin.ca" className="project-link"><img src="/media/allthingswetPreview.png" alt="Community Hub PWA" className="project-screenshot" /></a>
+              <p> I practiced modern, AI-assisted development, leveraging GitHub Copilot to accelerate boilerplate creation and streamline my workflow. 
+                This allowed me to focus on building robust core logic and solving unique project challenges, turning a complex idea into a live application efficiently.
+                Tech Stack:
+                  React | Node.js | Express | MongoDB | Tailwind CSS | Puppeteer | Vercel | Render
+                  Core Features:
+                  Automated Content Aggregator: A server-side scraping service using Node.js and Puppeteer to ethically gather and parse live data from multiple local sources.
+
+                  Full MERN Stack: Built with a React frontend, an Express/Node.js backend, and a MongoDB database.
+
+                  Dynamic Caching: Implemented a stale-while-revalidate caching strategy on the REST API to ensure high performance and fresh content for all users.
+
+                  Mobile-First PWA: Designed for a seamless, installable experience on any device.</p>
+            </div>
+          </div>
           <div className="project-slide">
             <div className="project-card card">
               <h3>Neighborhood Watch App</h3>
-              <img src="/media/nbrhd-watch.png" alt="Project 1 Coming Soon Sign" className="project-screenshot" />
+              <a href="https://neighborhood-cop.netlify.app/" className="project-link"><img src="/media/nbrhd-watch.png" alt="Neighborhood Watch Project" className="project-screenshot" /></a>
               <p>A community safety platform built with React, Vite, and Material UI. Features incident reporting, discussion boards, alerts, blog posts, and Auth0 authentication with role-based access. Includes an admin dashboard for management.</p>
-              <a href="https://neighborhood-cop.netlify.app/" className="project-link">View Details</a>
+              
             </div>
           </div>
-          <div className="project-slide">
-            <div className="project-card card">
-              <h3>Project Title 2</h3>
-              <img src="/media/comingsoon.png" alt="Project 2 Coming Soon Sign" className="project-screenshot" />
-              <p>Brief description of the project. Technologies used etc.</p>
-              <a href="#" className="project-link">View Details</a>
-            </div>
-          </div>
+          {/*
           <div className="project-slide">
             <div className="project-card card">
               <h3>Project Title 3</h3>
@@ -153,6 +165,7 @@ function Projects() {
               <a href="#" className="project-link">View Details</a>
             </div>
           </div>
+          */}
         </Slider>
       </div>
     </section>
