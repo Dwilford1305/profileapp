@@ -1,0 +1,19 @@
+# robots.txt for Derek Wilford Portfolio
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://derekwilford.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Allow crawling of media assets
+Allow: /media/
+Allow: /assets/
+
+# Block any admin or private areas (if they exist in future)
+Disallow: /admin/
+Disallow: /private/

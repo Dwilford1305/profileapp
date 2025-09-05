@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main page -->
+  <url>
+    <loc>https://derekwilford.com/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://derekwilford.com/media/headshot.png</image:loc>
+      <image:caption>Derek Wilford - Professional Headshot</image:caption>
+      <image:title>Derek Wilford</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Main sections (anchor links) -->
+  <url>
+    <loc>https://derekwilford.com/#about</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://derekwilford.com/#projects</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://derekwilford.com/media/allthingswetPreview.png</image:loc>
+      <image:caption>Community Hub PWA Project Screenshot</image:caption>
+      <image:title>All Things Wetaskiwin Community Hub</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://derekwilford.com/media/nbrhd-watch.png</image:loc>
+      <image:caption>Neighborhood Watch App Project Screenshot</image:caption>
+      <image:title>Neighborhood Watch App</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://derekwilford.com/#skills</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://derekwilford.com/#contact</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Resume download -->
+  <url>
+    <loc>https://derekwilford.com/media/DWilford_Red.pdf</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+</urlset>

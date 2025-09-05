@@ -34,7 +34,7 @@ function Navbar({ toggleTheme, currentTheme }: { toggleTheme: () => void, curren
     <nav className="navbar">
       <div className="navbar-content">
         <div className="navbar-brand">
-          <img src="/media/headshot.png" alt="Headshot" className="brand-headshot" />
+          <img src="/media/headshot.png" alt="Derek Wilford - Professional Web Developer" className="brand-headshot" />
           <span>Derek Wilford</span>
         </div>
         <div className="navbar-right-group">
@@ -133,7 +133,7 @@ function Projects() {
           <div className="project-slide">
             <div className="project-card card">
               <h3>Community Hub PWA</h3>
-              <a href="https://allthingswetaskiwin.ca" className="project-link"><img src="/media/allthingswetPreview.png" alt="Community Hub PWA" className="project-screenshot" /></a>
+              <a href="https://allthingswetaskiwin.ca" className="project-link"><img src="/media/allthingswetPreview.png" alt="All Things Wetaskiwin Community Hub PWA - React Node.js project showcase" className="project-screenshot" /></a>
               <p> I practiced modern, AI-assisted development, leveraging GitHub Copilot to accelerate boilerplate creation and streamline my workflow. 
                 This allowed me to focus on building robust core logic and solving unique project challenges, turning a complex idea into a live application efficiently.
                 Tech Stack:
@@ -151,7 +151,7 @@ function Projects() {
           <div className="project-slide">
             <div className="project-card card">
               <h3>Neighborhood Watch App</h3>
-              <a href="https://neighborhood-cop.netlify.app/" className="project-link"><img src="/media/nbrhd-watch.png" alt="Neighborhood Watch Project" className="project-screenshot" /></a>
+              <a href="https://neighborhood-cop.netlify.app/" className="project-link"><img src="/media/nbrhd-watch.png" alt="Neighborhood Watch Community Safety App - React Material UI project" className="project-screenshot" /></a>
               <p>A community safety platform built with React, Vite, and Material UI. Features incident reporting, discussion boards, alerts, blog posts, and Auth0 authentication with role-based access. Includes an admin dashboard for management.</p>
               
             </div>
@@ -210,10 +210,10 @@ function Contact({ theme }: { theme: string }) {
       <a href="mailto:wilfordderek@gmail.com" className="contact-link">wilfordderek@gmail.com</a>
       <div className="social-links">
         <a href="https://www.linkedin.com/in/derek-wilford13" target="_blank" rel="noopener noreferrer" className="social-link">
-          <img src={linkedinIcon} alt="LinkedIn Profile" className="social-icon" />
+          <img src={linkedinIcon} alt="Derek Wilford LinkedIn Profile - Connect with Web Developer" className="social-icon" />
         </a>
         <a href="https://github.com/Dwilford1305" target="_blank" rel="noopener noreferrer" className="social-link">
-          <img src={githubIcon} alt="GitHub Profile" className="social-icon" />
+          <img src={githubIcon} alt="Derek Wilford GitHub Profile - View Code Projects" className="social-icon" />
         </a>
       </div>
       <a href="/media/DWilford_Red.pdf" download="DerekWilford_Resume.pdf" className="resume-download-button button">
@@ -258,7 +258,7 @@ function ParallaxIcons() {
         <img
           key={index}
           src={`./media/techicons/${icon}`}
-          alt={icon.replace('.png', '')}
+          alt={`${icon.replace('.png', '')} technology icon - Derek Wilford skills`}
           className="parallax-icon"
           data-x={positionsRef.current[index].x}
           data-y={positionsRef.current[index].y}
