@@ -5,7 +5,7 @@ import App from './App';
 // Mock react-slick Slider to just render children
 jest.mock('react-slick', () => ({
   __esModule: true,
-  default: (props: any) => <div>{props.children}</div>
+  default: (props: { children?: React.ReactNode }) => <div>{props.children}</div>
 }));
 
 describe('App', () => {
