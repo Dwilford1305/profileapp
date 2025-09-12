@@ -1,0 +1,1 @@
+export { ParallaxIcons as default } from './ParallaxIcons';
