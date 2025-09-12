@@ -1,1 +1,1 @@
-export { ParallaxIcons } from './ParallaxIcons';
+export { ParallaxIcons as default } from './ParallaxIcons';

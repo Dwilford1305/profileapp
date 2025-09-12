@@ -1,11 +1,9 @@
 // Component exports for cleaner imports
+// Note: Projects, Skills, Contact, and ParallaxIcons are lazy-loaded
+// with default exports and should not be exported here
 export { About } from './About';
-export { Contact } from './Contact';
 export { Navbar } from './Navbar';
-export { Projects } from './Projects';
-export { Skills } from './Skills';
 export { AnimatedSection } from './AnimatedSection';
-export { ParallaxIcons } from './ParallaxIcons';
 
 // Shared components
 export { ErrorBoundary } from './shared/ErrorBoundary';
