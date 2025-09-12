@@ -9,10 +9,10 @@ import { Theme } from './types';
 import './App.css';
 
 // Lazy load components that are below the fold
-const Projects = lazy(() => import('./components/Projects').then(module => ({ default: module.Projects })));
-const Skills = lazy(() => import('./components/Skills').then(module => ({ default: module.Skills })));
-const Contact = lazy(() => import('./components/Contact').then(module => ({ default: module.Contact })));
-const ParallaxIcons = lazy(() => import('./components/ParallaxIcons').then(module => ({ default: module.ParallaxIcons })));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Contact = lazy(() => import('./components/Contact'));
+const ParallaxIcons = lazy(() => import('./components/ParallaxIcons'));
 
 /**
  * App
