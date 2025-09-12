@@ -6,8 +6,8 @@ import React from 'react';
  */
 export const About: React.FC = () => {
   return (
-    <section id="about" className="portfolio-section card">
-      <h2>About Me</h2>
+    <section id="about" className="portfolio-section card" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
       <p>
         Hi, I'm Derek, a Wetaskiwin, Alberta-based web and mobile app developer.
         

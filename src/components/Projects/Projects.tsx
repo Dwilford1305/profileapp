@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { ResponsiveImage } from '../shared/ResponsiveImage';
 
 /**
  * Projects
@@ -48,10 +49,11 @@ export const Projects: React.FC = () => {
             <div className="project-card card">
               <h3>Community Hub PWA</h3>
               <a href="https://allthingswetaskiwin.ca" className="project-link">
-                <img 
+                <ResponsiveImage
                   src="/media/allthingswetPreview.png" 
                   alt="All Things Wetaskiwin Community Hub PWA - React Node.js project showcase" 
                   className="project-screenshot" 
+                  loading="lazy"
                 />
               </a>
               <p>
@@ -74,10 +76,11 @@ export const Projects: React.FC = () => {
             <div className="project-card card">
               <h3>Neighborhood Watch App</h3>
               <a href="https://neighborhood-cop.netlify.app/" className="project-link">
-                <img 
+                <ResponsiveImage
                   src="/media/nbrhd-watch.png" 
                   alt="Neighborhood Watch Community Safety App - React Material UI project" 
                   className="project-screenshot" 
+                  loading="lazy"
                 />
               </a>
               <p>

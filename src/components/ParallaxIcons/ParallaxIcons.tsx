@@ -38,8 +38,7 @@ export const ParallaxIcons: React.FC = () => {
           src={`./media/techicons/${icon}`}
           alt={`${icon.replace('.png', '')} technology icon - Derek Wilford skills`}
           className="parallax-icon"
-          data-x={positionsRef.current[index].x}
-          data-y={positionsRef.current[index].y}
+          loading="lazy"
         />
       ))}
     </div>

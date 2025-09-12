@@ -9,3 +9,4 @@ export { ParallaxIcons } from './ParallaxIcons';
 
 // Shared components
 export { ErrorBoundary } from './shared/ErrorBoundary';
+export { ResponsiveImage } from './shared/ResponsiveImage';

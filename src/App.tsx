@@ -1,16 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense, lazy } from 'react';
 import { 
   Navbar, 
   About, 
-  Projects, 
-  Skills, 
-  Contact, 
   AnimatedSection, 
-  ParallaxIcons, 
   ErrorBoundary 
 } from './components';
 import { Theme } from './types';
 import './App.css';
+
+// Lazy load components that are below the fold
+const Projects = lazy(() => import('./components/Projects').then(module => ({ default: module.Projects })));
+const Skills = lazy(() => import('./components/Skills').then(module => ({ default: module.Skills })));
+const Contact = lazy(() => import('./components/Contact').then(module => ({ default: module.Contact })));
+const ParallaxIcons = lazy(() => import('./components/ParallaxIcons').then(module => ({ default: module.ParallaxIcons })));
 
 /**
  * App
@@ -35,17 +37,21 @@ function App() {
         <AnimatedSection>
           <About />
         </AnimatedSection>
-        <AnimatedSection>
-          <Projects />
-        </AnimatedSection>
-        <AnimatedSection>
-          <Skills />
-        </AnimatedSection>
-        <AnimatedSection>
-          <Contact theme={theme} />
-        </AnimatedSection>
+        <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+          <AnimatedSection>
+            <Projects />
+          </AnimatedSection>
+          <AnimatedSection>
+            <Skills />
+          </AnimatedSection>
+          <AnimatedSection>
+            <Contact theme={theme} />
+          </AnimatedSection>
+        </Suspense>
       </main>
-      <ParallaxIcons />
+      <Suspense fallback={<div className="loading-spinner">Loading icons...</div>}>
+        <ParallaxIcons />
+      </Suspense>
       <footer className="portfolio-footer">
         <p>&copy; 2025 Derek Wilford. All rights reserved.</p>
       </footer>
